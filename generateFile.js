@@ -1,0 +1,17 @@
+import fs from "fs";
+import path from "path";
+import { v4 } from "uuid";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const dirCodes = path.dirname(__filename);
+if (!fs.existsSync(dirCodes)) {
+  fs.mkdirSync(dirCodes, { recursive: true });
+}
+
+export const generateFile = async (format, content) => {
+  const jobId = v4();
+  const filename = `${jobId}.${format}`;
+  const filepath = path.join(dirCodes, filename);
+  await fs.writeFileSync(filepath, content);
+  return filepath;
+};
