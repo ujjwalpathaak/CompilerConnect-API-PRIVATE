@@ -29,12 +29,12 @@ app.post("/runCode", async (req, res) => {
   try {
     const filePath = await generateFile(language, code);
     const output = await executeCpp(filePath);
-    fs.unlink(filePath, (err) => {
+    fs.unlink(filePath.split(".")[0] + ".cpp", (err) => {
       if (err) {
         throw err;
       }
     });
-    fs.unlink(filePath.split(".")[0] + ".exe", (err) => {
+    fs.unlink(filePath.split(".")[0], (err) => {
       if (err) {
         throw err;
       }
