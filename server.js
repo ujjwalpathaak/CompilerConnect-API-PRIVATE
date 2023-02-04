@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import { generateFile } from "./generateFile.js";
 import { executeCpp } from "./runCode.js";
 app.use(cors());
+import path from "path";
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
@@ -28,18 +29,17 @@ app.post("/runCode", async (req, res) => {
 
   try {
     const filePath = await generateFile(language, code);
-    const output = await executeCpp(filePath);
-    fs.unlink(filePath.split(".")[0] + ".cpp", (err) => {
+    fs.unlink(path.basename(filePath).split(".")[0] + ".cpp", (err) => {
       if (err) {
         throw err;
       }
     });
-    fs.unlink(filePath.split(".")[0], (err) => {
+    fs.unlink(path.basename(filePath).split(".")[0], (err) => {
       if (err) {
         throw err;
       }
     });
-    return res.json(output);
+    return res.json(filePath);
   } catch (err) {
     console.log(err);
     res.status(400).json(err.error);
