@@ -14,7 +14,7 @@ export const executeCpp = (filepath) => {
   const outPath = path.join(outputPath, `${jobId}.exe`);
   return new Promise((resolve, reject) => {
     exec(
-      `g++ ${filepath} -o ${outPath} && ${jobId}.exe`,
+      `g++ -o ${filepath} ${filepath + ".cpp"} && ./${filepath}`,
       (error, stdout, stderr) => {
         error && reject({ error, stderr });
         stderr && reject(stderr);
