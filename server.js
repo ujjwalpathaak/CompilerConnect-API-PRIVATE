@@ -29,6 +29,7 @@ app.post("/runCode", async (req, res) => {
 
   try {
     const filePath = await generateFile(language, code);
+    const output = await executeCpp(filePath);
     fs.unlink(path.basename(filePath).split(".")[0] + ".cpp", (err) => {
       if (err) {
         throw err;
@@ -39,7 +40,7 @@ app.post("/runCode", async (req, res) => {
         throw err;
       }
     });
-    return res.json(filePath);
+    return res.json(output);
   } catch (err) {
     console.log(err);
     res.status(400).json(err.error);
