@@ -17,7 +17,7 @@ const execute = async (req, res) => {
     switch (language) {
       case "cpp":
         cpp_controller_input(code, language, input).then((response) => {
-          res.status(200).json({ ouput: response });
+          res.status(200).json({ output: response });
         });
         break;
       default:
