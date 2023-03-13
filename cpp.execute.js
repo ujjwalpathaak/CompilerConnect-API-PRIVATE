@@ -16,6 +16,11 @@ function compileCpp(filepath) {
 
     compileProcess.on("close", (code) => {
       if (code !== 0) {
+        fs.unlink("./" + fileName + ".cpp", (err) => {
+          if (err) {
+            throw err;
+          }
+        });
         console.error(`Compilation failed with code ${code}`);
         return;
       }
@@ -53,6 +58,16 @@ function compileCpp_input(filepath, inputFilePath) {
 
     compileProcess.on("close", (code) => {
       if (code !== 0) {
+        fs.unlink("./" + fileName + ".cpp", (err) => {
+          if (err) {
+            throw err;
+          }
+        });
+        fs.unlink("./" + inputFilePath, (err) => {
+          if (err) {
+            throw err;
+          }
+        });
         console.error(`Compilation failed with code ${code}`);
         return;
       }
