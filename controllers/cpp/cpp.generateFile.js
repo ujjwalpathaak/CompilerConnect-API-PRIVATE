@@ -8,9 +8,9 @@ if (!fs.existsSync(dirCodes)) {
   fs.mkdirSync(dirCodes, { recursive: true });
 }
 
-export const cpp_generateFile = async (lang, content) => {
+export const cpp_generateFile = async (content) => {
   const jobId = v4();
-  const filename = `${jobId}.${lang}`;
+  const filename = `${jobId}.cpp`;
   fs.writeFileSync(filename, content);
   return filename;
 };
