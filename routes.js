@@ -1,5 +1,5 @@
 import express from "express";
-import execute from "./execute.js";
+import { executeCpp, executePy } from "./execute.js";
 const router = express.Router();
 
 router.use(express.json());
@@ -10,6 +10,7 @@ router.get("/", (req, res) => {
   res.send("API Working");
 });
 
-router.post("/execCode", execute);
+router.post("/execCodeCpp", executeCpp);
+router.post("/execCodePy", executePy);
 
 export default router;
