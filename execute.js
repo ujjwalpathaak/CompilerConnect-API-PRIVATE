@@ -5,6 +5,7 @@ import python_controller_input from "./controllers/python/python.controller_inpu
 import { User } from "./newUser.js";
 
 export const executeCpp = async (request, response) => {
+  // console.log("cakled")
   const { code, inputCheck } = request.body;
   if (code === undefined) {
     return response
@@ -13,16 +14,16 @@ export const executeCpp = async (request, response) => {
   }
   if (inputCheck == "true") {
     const { input } = request.body;
-    cpp_controller_input(code, input).then((response) => {
+    cpp_controller_input(code, input).then((res) => {
       response
         .status(200)
-        .json({ output: response.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
+        .json({ output: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
     });
   } else {
-    cpp_controller(code).then((response) => {
+    cpp_controller(code).then((res) => {
       response
         .status(200)
-        .json({ ouput: response.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
+        .json({ ouput: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
     });
   }
 };
@@ -36,16 +37,16 @@ export const executePy = async (request, response) => {
   }
   if (inputCheck == "true") {
     const { input } = request.body;
-    python_controller_input(code, input).then((response) => {
+    python_controller_input(code, input).then((res) => {
       response
         .status(200)
-        .json({ output: response.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
+        .json({ output: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
     });
   } else {
-    python_controller(code).then((response) => {
+    python_controller(code).then((res) => {
       response
         .status(200)
-        .json({ ouput: response.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
+        .json({ ouput: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
     });
   }
 };

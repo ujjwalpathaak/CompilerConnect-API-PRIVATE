@@ -11,6 +11,7 @@ if (!fs.existsSync(dirCodes)) {
 export const cpp_generateFile = async (content) => {
   const jobId = v4();
   const filename = `${jobId}.cpp`;
+
   fs.writeFileSync(filename, content);
   return filename;
 };
