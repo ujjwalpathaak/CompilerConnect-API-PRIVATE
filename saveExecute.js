@@ -51,6 +51,8 @@ export const saveExecuteCpp = async (request, response) => {
       }
     });
   } else {
+    const { input } = request.body;
+    let exist = await User.findOne({ username });
     if (!exist) {
       return response.status(201).json({ error: "username does not exists" });
     }
