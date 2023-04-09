@@ -1,3 +1,5 @@
+import * as dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -10,10 +12,7 @@ import router from "./routes.js";
 
 const Connection = () => {
   try {
-    mongoose.connect(
-      "mongodb+srv://ujjwalpath2002:ujju2002@cluster0.0zjqj0s.mongodb.net/?retryWrites=true&w=majority",
-      { useUnifiedTopology: true }
-    );
+    mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true });
     console.log("database connected");
   } catch (error) {
     console.log("error connecting to database", err.message);
