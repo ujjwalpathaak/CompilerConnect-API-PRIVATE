@@ -23,7 +23,7 @@ export const executeCpp = async (request, response) => {
     cpp_controller(code).then((res) => {
       response
         .status(200)
-        .json({ ouput: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
+        .json({ output: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
     });
   }
 };
@@ -46,7 +46,7 @@ export const executePy = async (request, response) => {
     python_controller(code).then((res) => {
       response
         .status(200)
-        .json({ ouput: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
+        .json({ output: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
     });
   }
 };

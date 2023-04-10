@@ -18,6 +18,7 @@ function compileCpp(filepath) {
       if (code !== 0) {
         fs.unlink("./" + fileName + ".cpp", (err) => {
           if (err) {
+            console.error(err);
             throw err;
           }
         });

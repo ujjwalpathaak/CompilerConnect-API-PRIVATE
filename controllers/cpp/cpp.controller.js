@@ -4,9 +4,9 @@ import { cpp_generateFile } from "./cpp.generateFile.js";
 const cpp_controller = async (code) => {
   try {
     let filePath = await cpp_generateFile(code);
-    console.log("check");
+    // console.log("check");
     let output = await cpp_execute(filePath);
-    console.log(output);
+    // console.log(output);
     return output;
   } catch (err) {
     console.log(err);

@@ -51,7 +51,6 @@ export const saveExecuteCpp = async (request, response) => {
       }
     });
   } else {
-    const { input } = request.body;
     let exist = await User.findOne({ username });
     if (!exist) {
       return response.status(201).json({ error: "username does not exists" });
@@ -65,7 +64,7 @@ export const saveExecuteCpp = async (request, response) => {
         cpp_controller(code).then((res) => {
           return response
             .status(200)
-            .json({ ouput: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
+            .json({ output: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
         });
       } else {
         response.status(201).json({ error: "file already exists" });
@@ -114,7 +113,7 @@ export const saveExecutePy = async (request, response) => {
         python_controller(code).then((res) => {
           return response
             .status(200)
-            .json({ ouput: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
+            .json({ output: res.replace(/(?:\\[rn]|[\r\n]+)+/g, "") });
         });
       } else {
         response.status(201).json({ error: "file already exists" });

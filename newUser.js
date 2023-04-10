@@ -54,13 +54,14 @@ export const saveNewCode = async (code, lang, username, password, filename) => {
         password,
         filename,
       };
+      exist.codesArray.push(codes);
+      await exist.save();
     }
-
-    await newUser.save();
+    // await newUser.save();
     return response.status(200).json(newUser);
   } catch (error) {
     console.log("error adding new user", error);
-    return response.status(203).json(error.msg);
+    return;
   }
 };
 
