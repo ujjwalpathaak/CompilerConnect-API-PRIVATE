@@ -12,12 +12,12 @@ router.get("/", (req, res) => {
   res.send("API Working");
 });
 
-router.post("/py", executePy);
+// router.post("/py", executePy);
 router.post("/cpp", executeCpp);
-router.post("/save/cpp", saveExecuteCpp);
-router.post("/save/py", saveExecutePy);
-router.post("/newuser", newUser);
-router.post("/getCodeAll", getCode);
-router.post("/getSpecificCode", getSpecificCode);
+// router.post("/save/cpp", saveExecuteCpp);
+// router.post("/save/py", saveExecutePy);
+// router.post("/newuser", newUser);
+// router.post("/getCodeAll", getCode);
+// router.post("/getSpecificCode", getSpecificCde);
 
 export default router;

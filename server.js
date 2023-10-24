@@ -3,23 +3,23 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 const app = express();
 
-const PORT = process.env.PORT || 6000;
+const PORT = process.env.PORT || 3000;
 
 import router from "./routes.js";
 
-const Connection = () => {
-  try {
-    mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true });
-    console.log("database connected");
-  } catch (error) {
-    console.log("error connecting to database", err.message);
-  }
-};
+// const Connection = () => {
+//   try {
+//     mongoose.connect(process.env.DATABASE_URL, { useUnifiedTopology: true });
+//     console.log("database connected");
+//   } catch (error) {
+//     console.log("error connecting to database", err.message);
+//   }
+// };
 
-Connection();
+// Connection();
 
 app.use(cors());
 
